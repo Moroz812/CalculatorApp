@@ -28,10 +28,8 @@ public class SimpleArrayList {
     //параметр index - индекс элемента
     //возвращает элемент
     public String get(int index) {
-        // 1. Проверить, что индекс в допустимых пределах выбросить исключение
-        if (index < 0 || index >= arrayCount) {
-            throw new ArrayIndexOutOfBoundsException("Выход за пределы массива");
-        }
+        // 1. Проверить, что индекс в допустимых пределах выбросить исключение, с помощью метода uslovie();
+        uslovie(index);
         // 2. Вернуть элемент
         return array[index];
     }
@@ -41,17 +39,30 @@ public class SimpleArrayList {
         return arrayCount;
     }
 
-
     //Заменяет элемент по указанному индексу
     //параметр index - индекс элемента для замены
     //параметр element - значение внутри
     public void set(int index, String element) {
-        // 1. Проверить валидность индекса
+        // 1. Проверить валидность индекса, с помощью метода uslovie();
+        uslovie(index);
+        // 2. Заменить элемент
+            array[index] = element;
+    }
+
+    //метод очистки
+    public void clear() {
+        //обнуление элементов в цикле с сохранением предыдущей размерности массива
+        for (int i = 0; i < arrayCount; i++) {
+            array[i] = null;
+        }
+        arrayCount = 0;
+    }
+
+    //метод для условия выхода за пределы массива
+    private void uslovie(int index) {
         if (index < 0 || index >= arrayCount) {
             throw new ArrayIndexOutOfBoundsException("Выход за пределы массива");
         }
-        // 2. Заменить элемент
-            array[index] = element;
     }
 
     // метод для расширения массива
@@ -64,26 +75,5 @@ public class SimpleArrayList {
         }
         // 3. Заменить старый массив новым
         array = newArray;
-    }
-
-    //метод очистки
-    public void clear() {
-        //создание нового массива\обнуление элементов и размера
-        //array = new String[10];
-        //arrayCount = 0;
-
-        //обнуление используя конструктор
-        //this.array = new SimpleArrayList().array;
-        //this.arrayCount = 0;
-
-        //вариант обнуления элементов с сохранением размерности массива
-        //array = new String[array.length];
-        //arrayCount = 0;
-
-        //обнуление элементов в цикле с сохранением предыдущей размерности массива
-        for (int i = 0; i < arrayCount; i++) {
-            array[i] = null;
-        }
-        arrayCount = 0;
     }
 }
