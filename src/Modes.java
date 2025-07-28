@@ -9,7 +9,6 @@ public class Modes {
     public Calculate calculate; //объявляем поле? private final Calculate2 calculator - объявляем поле,
     // которое доступно только внутри класса Mods, не может быть изменено после инициализации (только один раз присваиваем значение)
 
-    //Calculate2 calculate = new Calculate2(); // Создаём экземпляр Calculate
     public Modes(Calculate calculate) { //передаём экземпляр calculate в качестве параметра в конструктор из main
         this.calculate = calculate; //сохраняем переданный объект в поле класса
     }
@@ -108,7 +107,7 @@ public class Modes {
                     result = scanner.nextInt();
                 }
 
-                System.out.print("Введите оператор (+, -, *, /) или 'q' для выхода или 'h' для истории: ");
+                System.out.print("Введите оператор (+, -, *, /) или 'q' для выхода или 'h' для истории или 'c' для очистки истории: ");
                 char operator = scanner.next().charAt(0);
 
                 if (operator == 'q' || operator == 'Q') {
@@ -117,6 +116,10 @@ public class Modes {
                     return;
                 } else if (operator == 'h' || operator == 'H') {
                     calculate.history.printHistory();
+                    continue;
+                }else if (operator == 'c' || operator == 'C') {
+                    calculate.history.clear();
+                    System.out.println("История операций очищена.");
                     continue;
                 }
 
