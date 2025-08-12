@@ -12,7 +12,7 @@ public class SimpleArrayList {
 
     // Добавляет элемент в конец списка
     // параметр element - строка для добавления
-    public void push(String element) {
+    public void add(String element) {
         // 1. Проверить, не заполнен ли массив
         if (arrayCount == array.length) {
             // 2. Если заполнен - расширить через метод resize

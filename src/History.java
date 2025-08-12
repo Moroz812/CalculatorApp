@@ -5,7 +5,7 @@ public class History {
 
     // Сохраняем операцию в массив history с использованием методов SimpleArrayList
     public void saveHistory(int num1, char operator, int num2, int result) {
-        history.push(num1 + " " + operator + " " + num2 + " = " + result);
+        history.add(num1 + " " + operator + " " + num2 + " = " + result);
     }
 
     // Выводим историю операций с использованием методов SimpleArrayList
