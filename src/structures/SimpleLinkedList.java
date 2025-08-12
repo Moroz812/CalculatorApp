@@ -41,15 +41,16 @@ public class SimpleLinkedList {
 
     // метод add(data) добавить в конец списка
     public void add(String data) {
+        Node newNode = new Node(data); // создаём новый узел один раз, чтобы 3 раза не вызывать конструктор
         if (head == null) {
-            head = new Node(data); // если список пуст - создается первый узел
+            head = newNode; // если список пуст - создается первый узел - голова
         } else {
         Node current = head; // начинаем с головы - можно ли это оптимизировать? т.к. частичное повторение с get
         // в цикле идём до последнего узла где next == null
         while (current.next != null) {
             current = current.next; // переход к следующему узлу
         }
-        current.next = new Node(data); // вызываем конструктор для добавления узла в конец
+        current.next = newNode; // новый узел идёт в конец
     }
     size++; // чтобы при добавлении узла увеличивалась длина списка
 }
