@@ -16,7 +16,7 @@ public class Main {
         list.add("C");
 
         System.out.println(list); // [A, B, C]
-        System.out.println("Размер: " + list.size()); // 3
+        System.out.println("Размер: " + list.count()); // 3
         System.out.println("Элемент 1: " + list.get(1)); // B
     }
 

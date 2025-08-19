@@ -5,8 +5,8 @@ public class SimpleLinkedList {
 
     // head - это "голова" списка, первый элемент. Без него список пуст.
     private Node head;
-    // size - количество элементов в списке. Начинаем с 0.
-    private int size = 0;
+    // count - количество элементов в списке. Начинаем с 0.
+    private int counte = 0;
 
     // класс Node (узел) - это "кирпичик", из которого состоит список.
     private static class Node { // это называется вложенный класс? нужно ли его делать static?
@@ -26,15 +26,15 @@ public class SimpleLinkedList {
         }
     }
 
-    // метод size() возвращает длину списка
-    public int size() {
-        return size;
+    // метод count() возвращает длину списка
+    public int count() {
+        return counte;
     }
 
     // метод get(index) - получить элемент по индексу
     public String get(int index) {
         // проверяем допустимость индекса
-        if (index < 0 || index >= size) {
+        if (index < 0 || index >= counte) {
             throw new IndexOutOfBoundsException("Неверный индекс!");
         }
 
@@ -58,7 +58,7 @@ public class SimpleLinkedList {
         }
         current.next = newNode; // новый узел идёт в конец
     }
-    size++; // чтобы при добавлении узла увеличивалась длина списка
+    counte++; // чтобы при добавлении узла увеличивалась длина списка
 }
 
     @Override
@@ -85,7 +85,7 @@ public class SimpleLinkedList {
     // метод очистки
     public void clear() {
         head = null; // обнуляем ссылки
-        size = 0;    // обнуляем размер списка
+        counte = 0;    // обнуляем размер списка
     }
 
     // addFirst() ? метод который будет добавлять в первую ноду, а потом в начало списка
@@ -95,5 +95,5 @@ public class SimpleLinkedList {
     // removeLast() ? метод удаления хвоста (последнего узла)
     // boolean contains() ? метод для проверки есть ли элемент в списке
     // remove() ? метод для удаления по значение
-    // clear() ? метод очистки - head = null; size = 0; и если есть tail - tail = null;
+    // clear() ? метод очистки - head = null; count = 0; и если есть tail - tail = null;
 }
