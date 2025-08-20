@@ -1,6 +1,6 @@
 public class Calculate {
     Operations operations = new Operations(); // Создаём экземпляр Operations
-    History history = new History(); // Создаём экземпляр History
+    History history = new History(false); // useLinkedList = false - создаём экземпляр структуры SimpleArrayList
 
     public int calculate(int num1, int num2, char operator) {
         int result;

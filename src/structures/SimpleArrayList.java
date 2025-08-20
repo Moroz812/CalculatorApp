@@ -18,18 +18,18 @@ public class SimpleArrayList {
             // 2. Если заполнен - расширить через метод resize
             resize();
         }
-            // 3. Добавить элемент в конец
-            array[arrayCount] = element;
-            // 4. Увеличить счетчик
-            arrayCount++;
+        // 3. Добавить элемент в конец
+        array[arrayCount] = element;
+        // 4. Увеличить счетчик
+        arrayCount++;
     }
 
     //Возвращает элемент по индексу
     //параметр index - индекс элемента
     //возвращает элемент
     public String get(int index) {
-        // 1. Проверить, что индекс в допустимых пределах выбросить исключение, с помощью метода uslovie();
-        uslovie(index);
+        // 1. Проверить, что индекс в допустимых пределах выбросить исключение, с помощью метода condition();
+        condition(index);
         // 2. Вернуть элемент
         return array[index];
     }
@@ -43,10 +43,10 @@ public class SimpleArrayList {
     //параметр index - индекс элемента для замены
     //параметр element - значение внутри
     public void set(int index, String element) {
-        // 1. Проверить валидность индекса, с помощью метода uslovie();
-        uslovie(index);
+        // 1. Проверить валидность индекса, с помощью метода condition();
+        condition(index);
         // 2. Заменить элемент
-            array[index] = element;
+        array[index] = element;
     }
 
     //метод очистки
@@ -59,7 +59,7 @@ public class SimpleArrayList {
     }
 
     //метод для условия выхода за пределы массива
-    private void uslovie(int index) {
+    private void condition(int index) {
         if (index < 0 || index >= arrayCount) {
             throw new ArrayIndexOutOfBoundsException("Выход за пределы массива");
         }

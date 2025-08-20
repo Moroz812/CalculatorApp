@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Modes {
 
-    public Calculate calculate; //объявляем поле? private final Calculate2 calculator - объявляем поле,
+    public Calculate calculate; //объявляем поле calculate private final?
     // которое доступно только внутри класса Mods, не может быть изменено после инициализации (только один раз присваиваем значение)
 
     public Modes(Calculate calculate) { //передаём экземпляр calculate в качестве параметра в конструктор из main

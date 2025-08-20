@@ -6,7 +6,7 @@ public class SimpleLinkedList {
     // head - это "голова" списка, первый элемент. Без него список пуст.
     private Node head;
     // count - количество элементов в списке. Начинаем с 0.
-    private int counte = 0;
+    private int count = 0;
 
     // класс Node (узел) - это "кирпичик", из которого состоит список.
     private static class Node { // это называется вложенный класс? нужно ли его делать static?
@@ -28,13 +28,13 @@ public class SimpleLinkedList {
 
     // метод count() возвращает длину списка
     public int count() {
-        return counte;
+        return count;
     }
 
     // метод get(index) - получить элемент по индексу
     public String get(int index) {
         // проверяем допустимость индекса
-        if (index < 0 || index >= counte) {
+        if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException("Неверный индекс!");
         }
 
@@ -58,7 +58,7 @@ public class SimpleLinkedList {
         }
         current.next = newNode; // новый узел идёт в конец
     }
-    counte++; // чтобы при добавлении узла увеличивалась длина списка
+    count++; // чтобы при добавлении узла увеличивалась длина списка
 }
 
     @Override
@@ -85,7 +85,7 @@ public class SimpleLinkedList {
     // метод очистки
     public void clear() {
         head = null; // обнуляем ссылки
-        counte = 0;    // обнуляем размер списка
+        count = 0;    // обнуляем размер списка
     }
 
     // addFirst() ? метод который будет добавлять в первую ноду, а потом в начало списка
