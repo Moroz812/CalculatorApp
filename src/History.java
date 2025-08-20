@@ -30,11 +30,13 @@ public class History {
     }
 
     // Выводим историю операций с использованием методов SimpleArrayList\SimpleLinkedList
-    public void printHistory () {
-        if (useLinkedList) {
-            printHistorySimpleLinkedList(); // если useLinkedList = true - printHistorySimpleLinkedList();
+    public void printHistory() {
+        if (historyIsEmpty()) {
+            System.out.println("История операций пуста.");
+            return;
         } else {
-            printHistorySimpleArrayList();  // если useLinkedList = false - printHistorySimpleArrayList();
+            System.out.println("\n--- История операций ---");
+            printOperations();
         }
     }
 
@@ -47,27 +49,27 @@ public class History {
         }
     }
 
-    // метод печати и проверки истории в SimpleArrayList
-    private void printHistorySimpleArrayList() {
-        if (historyArrayList.count() == 0) {
-            System.out.println("История операций пуста.");
-            return;
-        }
-        System.out.println("\n--- История операций ---");
-        for (int i = 0; i < historyArrayList.count(); i++) {
-            System.out.println(historyArrayList.get(i));
+    // метод для проверки пустая ли структура
+    private boolean historyIsEmpty() {
+        if (useLinkedList) {
+            return historyLinkedList.count() == 0;
+        } else {
+            return historyArrayList.count() == 0;
         }
     }
 
-    // метод печати и проверки истории в SimpleLinkedList
-    private void printHistorySimpleLinkedList() {
-        if (historyLinkedList.count() == 0) {
-            System.out.println("История операций пуста.");
-            return;
-        }
-        System.out.println("\n--- История операций ---");
-        for (int i = 0; i < historyLinkedList.count(); i++) {
-            System.out.println(historyLinkedList.get(i));
+    // метод для вывода всех операций, общий для обеих структур
+    private void printOperations() {
+        if (useLinkedList) {
+            // вывод для SimpleLinkedList
+            for (int i = 0; i < historyLinkedList.count(); i++) {
+                System.out.println(historyLinkedList.get(i));
+            }
+        } else {
+            // вывод для SimpleArrayList
+            for (int i = 0; i < historyArrayList.count(); i++) {
+                System.out.println(historyArrayList.get(i));
+            }
         }
     }
 }
