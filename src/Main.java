@@ -2,28 +2,30 @@ import structures.SimpleLinkedList;
 
 public class Main {
     public static void main(String[] args) {
+        //для теста структуры - расскоментировать;
+        //testDataStructures();
+        //return;
 
-
-        methodA();
-        //methodB();
+        //вызов общего метода запуска калькулятора
+        runCalculator(args);
     }
 
-    public static void methodA() {
+    //метод для тестирования структуры
+    public static void testDataStructures() {
+        System.out.println("=== ТЕСТ СТРУКТУР ДАННЫХ ===");
         SimpleLinkedList list = new SimpleLinkedList();
-
         list.add("A");
         list.add("B");
         list.add("C");
-
-        System.out.println(list); // [A, B, C]
+        System.out.println("Список: " + list); // [A, B, C]
         System.out.println("Размер: " + list.count()); // 3
         System.out.println("Элемент 1: " + list.get(1)); // B
     }
 
-    public static void methodB(String[] args) {
-        Calculate calculate = new Calculate(); // Создаём экземпляр Calculate
-        Modes modes = new Modes(calculate);
-
+    //общий метод запуска калькулятора с режимами
+    public static void runCalculator(String[] args) {
+        //Calculate calculate = new Calculate(); //создаём экземпляр Calculate
+        Modes modes = new Modes(); //создаём экземпляр Modes - запросит про структуру данных
 
         //режим запуска с параметром файл, где в файл введены аргументы и операнд через пробел
         //если длина массива больше 0 и начальный индекс массива имеет тип String file запускаем режим fileMode

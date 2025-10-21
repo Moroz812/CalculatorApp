@@ -6,13 +6,18 @@ import java.util.Scanner;
 
 public class Modes {
 
-    public Calculate calculate; //объявляем поле calculate private final?
+    private final Calculate calculate; //объявляем поле calculate
     // которое доступно только внутри класса Mods, не может быть изменено после инициализации (только один раз присваиваем значение)
 
-    public Modes(Calculate calculate) { //передаём экземпляр calculate в качестве параметра в конструктор из main
-        this.calculate = calculate; //сохраняем переданный объект в поле класса
+    //конструктор для выбора структуры
+    public Modes() {
+        boolean useLinkedList = chooseDataStructure();
+        this.calculate = new Calculate(useLinkedList);
     }
 
+    /*public Modes(Calculate calculate) { //передаём экземпляр calculate в качестве параметра в конструктор из main
+        this.calculate = calculate; //сохраняем переданный объект в поле класса
+    }*/
 
     //режим работы на считывание аргументов из файла
     public void fileMode(String[] args) {
@@ -78,8 +83,6 @@ public class Modes {
 
     }
 
-
-
     // Режим работы с аргументами командной строки
     public void commandLineMode(String[] args) {
         try {
@@ -93,7 +96,6 @@ public class Modes {
             System.err.println("Использование: java Calculator <число1> <оператор> <число2>");
         }
     }
-
 
     // Интерактивный режим работы
     public void interactiveMode() {
@@ -117,7 +119,7 @@ public class Modes {
                 } else if (operator == 'h' || operator == 'H') {
                     calculate.history.printHistory();
                     continue;
-                }else if (operator == 'c' || operator == 'C') {
+                } else if (operator == 'c' || operator == 'C') {
                     calculate.history.clear();
                     System.out.println("История операций очищена.");
                     continue;
@@ -135,6 +137,35 @@ public class Modes {
             } catch (Exception e) {
                 System.err.println("Ошибка: " + e.getMessage());
             }
+        }
+    }
+
+    //метод выбора структуры данных
+    private boolean chooseDataStructure() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("=== ВЫБОР СТРУКТУРЫ ДАННЫХ ===");
+        System.out.println("1 - ArrayList (быстрее для частого доступа к ячейке)");
+        System.out.println("2 - LinkedList (лучше для частых вставок и удалений)");
+        System.out.print("Ваш выбор (1 или 2): ");
+
+        try {
+            int choice = scanner.nextInt();
+            //преобразуем выбор в boolean:
+            //если пользователь выбрал 2 useLinkedList = true
+            //если пользователь выбрал не 2 useLinkedList = false
+            boolean useLinkedList = (choice == 2);
+
+            if (useLinkedList) {
+                System.out.println("Используется LinkedList");
+            } else {
+                System.out.println("Используется ArrayList");
+            }
+
+            return useLinkedList;
+        } catch (Exception e) {
+            System.out.println("Неверный выбор, по-умолчанию используется ArrayList");
+            return false; //по-умолчанию используем ArrayList
         }
     }
 }

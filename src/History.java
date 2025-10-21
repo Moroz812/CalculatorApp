@@ -3,22 +3,22 @@ import structures.SimpleLinkedList;
 
 public class History {
     private final boolean useLinkedList;
-    private final SimpleArrayList historyArrayList;   //Создаём поле для SimpleArrayList
-    private final SimpleLinkedList historyLinkedList; //Создаём поле для SimpleLinkedList
+    private final SimpleArrayList historyArrayList;   //создаём поле для SimpleArrayList
+    private final SimpleLinkedList historyLinkedList; //создаём поле для SimpleLinkedList
 
-    // Конструктор для установки флага и создание 1ой структуры
+    //конструктор для установки флага и создание 1ой структуры
     public History(boolean useLinkedList) {
         this.useLinkedList = useLinkedList;
         if (useLinkedList) {
-            historyLinkedList = new SimpleLinkedList(); // если useLinkedList = true - создаём экземпляр структуры SimpleLinkedList
+            historyLinkedList = new SimpleLinkedList(); //если useLinkedList = true - создаём экземпляр структуры SimpleLinkedList
             historyArrayList = null; // не используем
         } else {
-            historyArrayList = new SimpleArrayList(); // если useLinkedList = false - создаём экземпляр структуры SimpleArrayList
-            historyLinkedList = null; // не используем
+            historyArrayList = new SimpleArrayList(); //если useLinkedList = false - создаём экземпляр структуры SimpleArrayList
+            historyLinkedList = null; //не используем
         }
     }
 
-    // Сохраняем операцию в массив history с использованием методов SimpleArrayList
+    //сохраняем операцию в массив history с использованием методов SimpleArrayList
     public void saveHistory(int num1, char operator, int num2, int result) {
         String operation = num1 + " " + operator + " " + num2 + " = " + result;
         if (useLinkedList) {
@@ -29,13 +29,12 @@ public class History {
         }
     }
 
-    // Выводим историю операций с использованием методов SimpleArrayList\SimpleLinkedList
+    //выводим историю операций с использованием методов SimpleArrayList\SimpleLinkedList
     public void printHistory() {
-        if (historyIsEmpty()) {
-            System.out.println("История операций пуста.");
-            return;
+        if (isHistoryEmpty()) {
+            printEmptyMessage();
         } else {
-            System.out.println("\n--- История операций ---");
+            printHeader();
             printOperations();
         }
     }
@@ -49,8 +48,18 @@ public class History {
         }
     }
 
-    // метод для проверки пустая ли структура
-    private boolean historyIsEmpty() {
+    //метод для вывода сообщения о пустой истории
+    private void printEmptyMessage() {
+        System.out.println("История операций пуста.");
+    }
+
+    //метод для вывода заголовка истории операций
+    private void printHeader() {
+        System.out.println("\n--- История операций ---");
+    }
+
+    //метод для проверки пустая ли структура
+    private boolean isHistoryEmpty() {
         if (useLinkedList) {
             return historyLinkedList.count() == 0;
         } else {
@@ -58,18 +67,28 @@ public class History {
         }
     }
 
-    // метод для вывода всех операций, общий для обеих структур
+    //общий метод для всех операций
     private void printOperations() {
         if (useLinkedList) {
-            // вывод для SimpleLinkedList
-            for (int i = 0; i < historyLinkedList.count(); i++) {
-                System.out.println(historyLinkedList.get(i));
-            }
+            //вывод для SimpleLinkedList
+            printSimpleLinkedListOperations();
         } else {
-            // вывод для SimpleArrayList
-            for (int i = 0; i < historyArrayList.count(); i++) {
-                System.out.println(historyArrayList.get(i));
-            }
+            //вывод для SimpleArrayList
+            printSimpleArrayListOperations();
+        }
+    }
+
+    //метод печати операций для SimpleLinkedList
+    private void printSimpleLinkedListOperations() {
+        for (int i = 0; i < historyLinkedList.count(); i++) {
+            System.out.println(historyLinkedList.get(i));
+        }
+    }
+
+    //метод печати операций для SimpleArrayList
+    private void printSimpleArrayListOperations() {
+        for (int i = 0; i < historyArrayList.count(); i++) {
+            System.out.println(historyArrayList.get(i));
         }
     }
 }
