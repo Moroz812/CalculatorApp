@@ -146,7 +146,7 @@ public class Modes {
 
         System.out.println("=== ВЫБОР СТРУКТУРЫ ДАННЫХ ===");
         System.out.println("1 - ArrayList (быстрее для частого доступа к ячейке)");
-        System.out.println("2 - LinkedList (лучше для частых вставок и удалений)");
+        System.out.println("2 - LinkedList (лучше для частых вставок и удалений в начало и конец)");
         System.out.print("Ваш выбор (1 или 2): ");
 
         try {

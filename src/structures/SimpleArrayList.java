@@ -1,17 +1,17 @@
 package structures;
 
 public class SimpleArrayList {
-    private String[] array; // массив для хранения элементов
-    private int arrayCount; // Текущее количество элементов
+    private String[] array; //массив для хранения элементов
+    private int arrayCount; //текущее количество элементов
 
-    // Конструктор по умолчанию (начальный размер 10)
+    //конструктор по умолчанию (начальный размер 10)
     public SimpleArrayList() {
         array = new String[10];
         arrayCount = 0;
     }
 
-    // Добавляет элемент в конец списка
-    // параметр element - строка для добавления
+    //добавляет элемент в конец списка
+    //параметр element - строка для добавления
     public void add(String element) {
         // 1. Проверить, не заполнен ли массив
         if (arrayCount == array.length) {
@@ -24,7 +24,7 @@ public class SimpleArrayList {
         arrayCount++;
     }
 
-    //Возвращает элемент по индексу
+    //возвращает элемент по индексу
     //параметр index - индекс элемента
     //возвращает элемент
     public String get(int index) {
@@ -39,7 +39,7 @@ public class SimpleArrayList {
         return arrayCount;
     }
 
-    //Заменяет элемент по указанному индексу
+    //заменяет элемент по указанному индексу
     //параметр index - индекс элемента для замены
     //параметр element - значение внутри
     public void set(int index, String element) {
@@ -65,7 +65,7 @@ public class SimpleArrayList {
         }
     }
 
-    // метод для расширения массива
+    //метод для расширения массива
     private void resize() {
         // 1. Создать новый массив (в 2 раза больше)
         String[] newArray = new String[array.length * 2];
