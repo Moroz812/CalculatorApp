@@ -1,35 +1,35 @@
 package structures;
 
 public class SimpleArrayList {
-    private String[] array; // массив для хранения элементов
-    private int arrayCount; // Текущее количество элементов
+    private String[] array; //массив для хранения элементов
+    private int arrayCount; //текущее количество элементов
 
-    // Конструктор по умолчанию (начальный размер 10)
+    //конструктор по умолчанию (начальный размер 10)
     public SimpleArrayList() {
         array = new String[10];
         arrayCount = 0;
     }
 
-    // Добавляет элемент в конец списка
-    // параметр element - строка для добавления
+    //добавляет элемент в конец списка
+    //параметр element - строка для добавления
     public void add(String element) {
         // 1. Проверить, не заполнен ли массив
         if (arrayCount == array.length) {
             // 2. Если заполнен - расширить через метод resize
             resize();
         }
-            // 3. Добавить элемент в конец
-            array[arrayCount] = element;
-            // 4. Увеличить счетчик
-            arrayCount++;
+        // 3. Добавить элемент в конец
+        array[arrayCount] = element;
+        // 4. Увеличить счетчик
+        arrayCount++;
     }
 
-    //Возвращает элемент по индексу
+    //возвращает элемент по индексу
     //параметр index - индекс элемента
     //возвращает элемент
     public String get(int index) {
-        // 1. Проверить, что индекс в допустимых пределах выбросить исключение, с помощью метода uslovie();
-        uslovie(index);
+        // 1. Проверить, что индекс в допустимых пределах выбросить исключение, с помощью метода condition();
+        condition(index);
         // 2. Вернуть элемент
         return array[index];
     }
@@ -39,14 +39,14 @@ public class SimpleArrayList {
         return arrayCount;
     }
 
-    //Заменяет элемент по указанному индексу
+    //заменяет элемент по указанному индексу
     //параметр index - индекс элемента для замены
     //параметр element - значение внутри
     public void set(int index, String element) {
-        // 1. Проверить валидность индекса, с помощью метода uslovie();
-        uslovie(index);
+        // 1. Проверить валидность индекса, с помощью метода condition();
+        condition(index);
         // 2. Заменить элемент
-            array[index] = element;
+        array[index] = element;
     }
 
     //метод очистки
@@ -59,13 +59,13 @@ public class SimpleArrayList {
     }
 
     //метод для условия выхода за пределы массива
-    private void uslovie(int index) {
+    private void condition(int index) {
         if (index < 0 || index >= arrayCount) {
             throw new ArrayIndexOutOfBoundsException("Выход за пределы массива");
         }
     }
 
-    // метод для расширения массива
+    //метод для расширения массива
     private void resize() {
         // 1. Создать новый массив (в 2 раза больше)
         String[] newArray = new String[array.length * 2];
