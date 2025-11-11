@@ -116,7 +116,7 @@ public class Modes {
                     calculate.history.printHistory();
                     continue;
                 } else if (operator == 'c' || operator == 'C') {
-                    calculate.history.clear();
+                    calculate.history.clearOperations();
                     System.out.println("История операций очищена.");
                     continue;
                 }

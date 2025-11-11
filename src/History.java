@@ -19,7 +19,7 @@ public class History {
     //сохраняем операцию в массив history с использованием методов SimpleArrayList
     public void saveHistory(int num1, char operator, int num2, int result) {
         String operation = num1 + " " + operator + " " + num2 + " = " + result;
-        addOperation(operation);  //используем метод addOperation
+        addOperation(operation);  //используем метод addOperation()
     }
 
     //выводим историю операций с использованием методов SimpleArrayList\SimpleLinkedList
@@ -32,13 +32,8 @@ public class History {
         }
     }
 
-    //очищаем историю, используя метод clearOperation
-    public void clear() {
-        clearOperations();  //используем метод clearOperations()
-    }
-
     //очищаем, используя метод clear из структур SimpleArrayList\SimpleLinkedList
-    private void clearOperations() {
+    public void clearOperations() {
         if (useLinkedList) {
             historyLinkedList.clear(); //вызываем clear() у LinkedList
         } else {
