@@ -7,17 +7,13 @@ import java.util.Scanner;
 public class Modes {
 
     private final Calculate calculate; //объявляем поле calculate
-    // которое доступно только внутри класса Mods, не может быть изменено после инициализации (только один раз присваиваем значение)
+    //которое доступно только внутри класса Mods, не может быть изменено после инициализации (только один раз присваиваем значение)
 
     //конструктор для выбора структуры
     public Modes() {
         boolean useLinkedList = chooseDataStructure();
         this.calculate = new Calculate(useLinkedList);
     }
-
-    /*public Modes(Calculate calculate) { //передаём экземпляр calculate в качестве параметра в конструктор из main
-        this.calculate = calculate; //сохраняем переданный объект в поле класса
-    }*/
 
     //режим работы на считывание аргументов из файла
     public void fileMode(String[] args) {
@@ -27,26 +23,26 @@ public class Modes {
             return;
         }
 
-        String filePath = args[1]; // Путь к файлу - второй аргумент
+        String filePath = args[1]; //путь к файлу - второй аргумент
         File file = new File(filePath);
 
-        // Если файл не существует - создаем новый и выводим имя + путь
-        // проверка существования файла
+        //если файл не существует - создаем новый и выводим имя + путь
+        //проверка существования файла
         if (!file.exists()) {
             try {
-                if (file.createNewFile()) { // создаём файл, выводим имя и путь, сообщаем, что его нужно заполнить в формате
+                if (file.createNewFile()) { //создаём файл, выводим имя и путь, сообщаем, что его нужно заполнить в формате
                     System.out.println("Создан новый файл: " + file.getAbsolutePath());
                     System.out.println("Добавьте в него операции в формате: '(аргумент) (пробел) (оператор) (пробел) (аргумент)'");
                 }
-                return; // Выходим, чтобы пользователь мог заполнить файл
+                return; //выходим, чтобы пользователь мог заполнить файл
             } catch (IOException e) {
                 System.err.println("Ошибка при создании файла: " + e.getMessage());
                 return;
             }
         }
 
-        // Если файл существует - обрабатываем его
-        // Реализация чтения из файла, принимает путь к файлу
+        //если файл существует - обрабатываем его
+        //реализация чтения из файла, принимает путь к файлу
         //try (Scanner fileScanner = new Scanner(new File(filePath))) { //передаём в сканер файл и путь к файлу
         try (Scanner fileScanner = new Scanner(file)) {
             if (!fileScanner.hasNextLine()) { //проверка на пустой файл
@@ -54,10 +50,10 @@ public class Modes {
                 return;
             }
 
-            // Читаем ВСЮ строку из файла и убираем пробелы до и после
+            //читаем ВСЮ строку из файла и убираем пробелы до и после
             String line = fileScanner.nextLine().trim();
 
-            // Разбиваем по пробелам и записываем в массив parts
+            //разбиваем по пробелам и записываем в массив parts
             String[] parts = line.split(" ");
 
             //если длина массива parts не равна 3 - пишем сообщение, какой формат внутри файла
@@ -83,7 +79,7 @@ public class Modes {
 
     }
 
-    // Режим работы с аргументами командной строки
+    //режим работы с аргументами командной строки
     public void commandLineMode(String[] args) {
         try {
             int num1 = Integer.parseInt(args[0]);
@@ -97,7 +93,7 @@ public class Modes {
         }
     }
 
-    // Интерактивный режим работы
+    //интерактивный режим работы
     public void interactiveMode() {
         Scanner scanner = new Scanner(System.in);
         int result = 0;

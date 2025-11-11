@@ -2,7 +2,7 @@ import structures.SimpleLinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        //для теста структуры - расскоментировать;
+        //для теста структуры - раскомментировать;
         //testDataStructures();
         //return;
 
@@ -24,7 +24,6 @@ public class Main {
 
     //общий метод запуска калькулятора с режимами
     public static void runCalculator(String[] args) {
-        //Calculate calculate = new Calculate(); //создаём экземпляр Calculate
         Modes modes = new Modes(); //создаём экземпляр Modes - запросит про структуру данных
 
         //режим запуска с параметром файл, где в файл введены аргументы и операнд через пробел

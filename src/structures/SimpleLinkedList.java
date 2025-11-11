@@ -95,5 +95,5 @@ public class SimpleLinkedList {
     // removeLast() ? метод удаления хвоста (последнего узла)
     // boolean contains() ? метод для проверки есть ли элемент в списке
     // remove() ? метод для удаления по значение
-    // clear() ? метод очистки - head = null; count = 0; и если есть tail - tail = null;
+    // clearOperation() ? метод очистки - head = null; count = 0; и если есть tail - tail = null;
 }

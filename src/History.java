@@ -19,12 +19,7 @@ public class History {
     //сохраняем операцию в массив history с использованием методов SimpleArrayList
     public void saveHistory(int num1, char operator, int num2, int result) {
         String operation = num1 + " " + operator + " " + num2 + " = " + result;
-        if (useLinkedList) {
-            historyLinkedList.add(operation);
-        } else {
-            historyArrayList.add(operation);
-
-        }
+        addOperation(operation);  //используем метод addOperation
     }
 
     //выводим историю операций с использованием методов SimpleArrayList\SimpleLinkedList
@@ -37,12 +32,44 @@ public class History {
         }
     }
 
-    //очищаем, используя метод clear из SimpleArrayList\SimpleLinkedList
+    //очищаем историю, используя метод clearOperation
     public void clear() {
+        clearOperations();  //используем метод clearOperations()
+    }
+
+    //очищаем, используя метод clear из структур SimpleArrayList\SimpleLinkedList
+    private void clearOperations() {
         if (useLinkedList) {
-            historyLinkedList.clear();
+            historyLinkedList.clear(); //вызываем clear() у LinkedList
         } else {
-            historyArrayList.clear();
+            historyArrayList.clear(); //вызываем clear() у ArrayList
+        }
+    }
+
+    //добавление, используя метод add из структур SimpleArrayList\SimpleLinkedList
+    private void addOperation(String operation) {
+        if (useLinkedList) {
+            historyLinkedList.add(operation); //вызываем add() у LinkedList
+        } else {
+            historyArrayList.add(operation); //вызываем add() у ArrayList
+        }
+    }
+
+    //метод возвращает количество элементов в активной структуре
+    private int getCount() {
+        if (useLinkedList) {
+            return historyLinkedList.count(); //вызываем count() у LinkedList
+        } else {
+            return historyArrayList.count();  //вызываем count() у ArrayList
+        }
+    }
+
+    //метод возвращает операцию по индексу из активной структуры
+    private String getOperation(int index) {
+        if (useLinkedList) {
+            return historyLinkedList.get(index); //вызываем get() у LinkedList
+        } else {
+            return historyArrayList.get(index);  //вызываем get() у ArrayList
         }
     }
 
@@ -71,24 +98,6 @@ public class History {
         for (int i = 0; i < count; i++) {
             String operation = getOperation(i);
             System.out.println(operation);
-        }
-    }
-
-    //метод возвращает количество элементов в активной структуре
-    private int getCount() {
-        if (useLinkedList) {
-            return historyLinkedList.count(); //вызываем count() у LinkedList
-        } else {
-            return historyArrayList.count();  //вызываем count() у ArrayList
-        }
-    }
-
-    //метод возвращает операцию по индексу из активной структуры
-    private String getOperation(int index) {
-        if (useLinkedList) {
-            return historyLinkedList.get(index); //вызываем get() у LinkedList
-        } else {
-            return historyArrayList.get(index);  //вызываем get() у ArrayList
         }
     }
 }

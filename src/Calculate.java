@@ -1,5 +1,5 @@
 public class Calculate {
-    private Operations operations = new Operations(); //создаём экземпляр Operations
+    private final Operations operations = new Operations(); //создаём экземпляр Operations
     public History history; //создаём поле history
 
     //конструктор для выбора структуры
@@ -12,16 +12,16 @@ public class Calculate {
         int result;
         switch (operator) {
             case '+':
-                result = operations.summa(num1, num2);
+                result = operations.addition(num1, num2);
                 break;
             case '-':
-                result = operations.raznost(num1, num2);
+                result = operations.subtraction(num1, num2);
                 break;
             case '*':
-                result = operations.proizvedenie(num1, num2);
+                result = operations.multiplication(num1, num2);
                 break;
             case '/':
-                result = operations.chastnoe(num1, num2);
+                result = operations.division(num1, num2);
                 break;
             default:
                 throw new IllegalArgumentException("Неподдерживаемый оператор: " + operator);
